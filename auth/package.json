@@ -6,6 +6,7 @@
   "scripts": {
     "start": "ts-node-dev --poll src/index.ts"
   },
+  
   "keywords": [],
   "author": "",
   "license": "ISC",
