@@ -19,8 +19,6 @@ Change back to the root project directory.
 
 Run skaffold dev
 
-Give Skaffold a little time to start up. You should then be able to access the app in your browser at ticketing.dev.
-
-Important - You can also use this zip file as a checkpoint. It includes all updates and fixes from previous lecture notes including the Auth service, Ingress, and Client service. If you would rather not code along, you can simply download the zip file, extract and run skaffold dev. This assumes that your ticketing secret had previously been set. If not, you will need to run:
+You will need to set up a secret key in order to create your jason web tokens for authentication.
 
 kubectl create secret generic jwt-secret --from-literal JWT_KEY=asdf
