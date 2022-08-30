@@ -4,16 +4,24 @@
 
 Open up /etc/hosts in a code editor and add the following:
 
-<3127.0.0.1> ticketing.dev (If running on google cloud you will need to use the cluster IP address instead here)
+<127.0.0.1> ticketing.dev
 127.0.0.1 kubernetes.docker.internal
-
-Step to do only if you are running Docker/Kubernetes on your local machine (if you are using Google Cloud then skip this)
+(Note that if you're running your containers on google cloud, you'd use your cluster ip address instead of localhost's 127.0.0.1)
 
 Change into the client directory at your terminal
 
 Run docker build -t <YOURDOCKERID>/client .
 
 Run docker push <YOURDOCKERID>/client
+
+Change into orders directory
+Run docker build -t <YOURDOCKERID>/orders .
+
+Run docker push <YOURDOCKERID>/orders
+
+change into auth directory
+Run docker build -t <YOURDOCKERID>/auth .
+Run docker push <YOURDOCKERID>/auth
 
 Change back to the root project directory.
 
