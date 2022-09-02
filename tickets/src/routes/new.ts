@@ -32,6 +32,7 @@ router.post(
       price: ticket.price,
       userId: ticket.userId,
     });
+    console.log("Called post method");
 
     res.status(201).send(ticket);
   }
