@@ -29,4 +29,4 @@ Run skaffold dev
 
 You will need to set up a secret key in order to create your jason web tokens for authentication.
 
-kubectl create secret generic jwt-secret --from-literal JWT_KEY=asdf
+kubectl create secret generic jwt-secret --from-literal JWT_KEY=<Insert a secret key here>
