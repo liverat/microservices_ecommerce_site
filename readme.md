@@ -25,7 +25,9 @@ Run docker push <YOURDOCKERID>/auth
 
 Change back to the root project directory.
 
-Run skaffold dev
+Run `skaffold dev`
+
+Note that you may need to have docker running on your machine even if you are running your kubernetes clusters on the cloud.
 
 You will need to set up a secret key in order to create your jason web tokens for authentication.
 
