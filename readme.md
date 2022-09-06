@@ -31,4 +31,6 @@ Note that you may need to have docker running on your machine even if you are ru
 
 You will need to set up a secret key in order to create your jason web tokens for authentication.
 
-kubectl create secret generic jwt-secret --from-literal JWT_KEY=<Insert a secret key here>
+kubectl create secret generic jwt-secret --from-literal JWT_KEY=<Insert a secret key here (can use any random string)>
+kubectl create secret generic stripe-secret --from-literal STRIPE_KEY=<Instert stripe s
+ecret api key here (need to sign up at stripe.com)>
