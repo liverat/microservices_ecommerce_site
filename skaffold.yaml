@@ -6,12 +6,12 @@ deploy:
       - ./infra/k8s/*
       - ./infra/k8s-dev/*
 build:
-  # local:
-  #   push: false
-  googleCloudBuild:
-    projectId: ticketing-dev-359520
+  local:
+    push: false
+  # googleCloudBuild:
+  #   projectId: ticketing-dev-359520
   artifacts:
-    - image: us.gcr.io/ticketing-dev-359520/auth
+    - image: jamesreinhardt222/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -19,7 +19,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/ticketing-dev-359520/tickets
+    - image: jamesreinhardt222/tickets
       context: tickets
       docker:
         dockerfile: Dockerfile
@@ -27,7 +27,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/ticketing-dev-359520/client
+    - image: jamesreinhardt222/client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -35,7 +35,7 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
-    - image: us.gcr.io/ticketing-dev-359520/orders
+    - image: jamesreinhardt222/orders
       context: orders
       docker:
         dockerfile: Dockerfile
@@ -43,7 +43,7 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
-    - image: us.gcr.io/ticketing-dev-359520/expiration
+    - image: jamesreinhardt222/expiration
       context: expiration
       docker:
         dockerfile: Dockerfile
@@ -51,7 +51,7 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
-    - image: us.gcr.io/ticketing-dev-359520/payments
+    - image: jamesreinhardt222/payments
       context: payments
       docker:
         dockerfile: Dockerfile
