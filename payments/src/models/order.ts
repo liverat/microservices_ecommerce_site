@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { OrderStatus } from '@liverattickets/common';
-import { updateIfCurrentPluginm} from 'mongoose-update-if-current';
+import { updateIfCurrentPlugin} from 'mongoose-update-if-current';
 
 interface OrderAttrs {
   id: string;
