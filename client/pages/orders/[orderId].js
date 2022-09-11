@@ -32,21 +32,22 @@ const OrderShow = ({ order, currentUser }) => {
     return <div>Order Expired</div>;
   }
 
-  return <div>Time left to pay: {timeLeft} seconds.
+  return (<div>Time left to pay: {timeLeft} seconds.
   {/* Test with credit card number 4242 4242 4242 4242 */}
   <StripeCheckout 
-    token = {({id}) => doRequest({ token: id })}
-    stripeKey = 'pk_test_51LepEtEqKZKpue8IsBqiF3Gl30FPks5b9hIDtjvSHA3GtBpKJBvbsXwojBASwsyLpJ55IqgcqRpoxcjufUHHuRD800NoKTyQAd'
-    amount = {order.ticket.price * 100}
+    token={({ id }) => doRequest({ token: id })}
+    stripeKey='pk_test_51LepEtEqKZKpue8IsBqiF3Gl30FPks5b9hIDtjvSHA3GtBpKJBvbsXwojBASwsyLpJ55IqgcqRpoxcjufUHHuRD800NoKTyQAd'
+    amount={order.ticket.price * 100}
     email={currentUser.email}
   />
   {errors}
-  </div>;
-}
+  </div>
+  );
+};
 
 OrderShow.getInitialProps = async (context, client) => {
   const { orderId } = context.query;
-  const { data } = client.get(`/api/orders/${orderId}`);
+  const { data } = await client.get(`/api/orders/${orderId}`);
 
   return { order: data };
 };

@@ -9,19 +9,21 @@ const NewTicket = () => {
     url: '/api/tickets',
     method: 'post',
     body: {
-      title, price
+      title,
+      price,
     },
     onSuccess: () => Router.push('/'),
-  })
+  });
 
   const onSubmit = (event) => {
     event.preventDefault();
 
     doRequest();
-  }
+  };
 
   const onBlur = () => {
     const value = parseFloat(price);
+
     if (isNaN(value)) {
       return;
     }
@@ -29,9 +31,9 @@ const NewTicket = () => {
     setPrice(value.toFixed(2));
   };
 
-  return <div>
+  return (
+  <div>
     <h1>Create a Ticket</h1>
-
     <form onSubmit={onSubmit}>
       <div className="form-group">
         <label>Title</label>
@@ -54,6 +56,7 @@ const NewTicket = () => {
       <button className="btn btn-primary">Submit</button>
     </form>
   </div>
+  );
 };
 
 export default NewTicket;

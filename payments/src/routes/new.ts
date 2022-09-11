@@ -30,29 +30,27 @@ router.post('/api/payments',
     }
 
     if (order.status === OrderStatus.Cancelled) {
-      throw new BadRequestError("Cannot pay for an expired/cancelled order.");
+      throw new BadRequestError("Cannot pay for a cancelled order");
     }
 
     const charge = await stripe.charges.create({
-      currency: 'usd',
+      currency: "usd",
       amount: order.price * 100,
-      source: token
+      source: token,
     });
-
     const payment = Payment.build({
       orderId,
-      stripeId: charge.id
+      stripeId: charge.id,
     });
-
     await payment.save();
     new PaymentCreatedPublisher(natsWrapper.client).publish({
       id: payment.id,
       orderId: payment.orderId,
-      stripeId: payment.stripeId
-    })
+      stripeId: payment.stripeId,
+    });
 
-    res.status(201).send({id: payment.id});
+    res.status(201).send({ id: payment.id });
   }
 );
 
-export { router as createChargeRouter};
+export { router as createChargeRouter };

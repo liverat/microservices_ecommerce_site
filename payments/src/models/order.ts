@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { OrderStatus } from '@liverattickets/common';
-import {updateIfCurrentPlugin} from 'mongoose-update-if-current';
+import { updateIfCurrentPluginm} from 'mongoose-update-if-current';
 
 interface OrderAttrs {
   id: string;
@@ -10,7 +10,7 @@ interface OrderAttrs {
   status: OrderStatus;
 }
 
-interface OrderDoc extends mongoose.Document{
+interface OrderDoc extends mongoose.Document {
   version: number;
   userId: string;
   price: number;
@@ -55,9 +55,9 @@ orderSchema.statics.build = (attrs: OrderAttrs) => {
     version: attrs.version,
     price: attrs.price,
     userId: attrs.userId,
-    status: attrs.status
+    status: attrs.status,
   });
-}
+};
 
 const Order = mongoose.model<OrderDoc, OrderModel>('Order', orderSchema);
 

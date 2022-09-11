@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 interface PaymentAttrs {
   orderId: string;
@@ -10,31 +10,38 @@ interface PaymentDoc extends mongoose.Document {
   stripeId: string;
 }
 
-interface PaymentModel extends mongoose.Model<PaymentDoc>{
+interface PaymentModel extends mongoose.Model<PaymentDoc> {
   build(attrs: PaymentAttrs): PaymentDoc;
 }
 
-const PaymentSchema = new mongoose.Schema({
+const PaymentSchema = new mongoose.Schema(
+ {
   orderId: {
     required: true,
     type: String,
   },
   stripeId: {
     required: true,
-    type: String
-  }
-}, {
+    type: String,
+  },
+},
+{
   toJSON: {
     transform(doc, ret) {
-    ret.id = ret._id
-  }
-}
-});
+      ret.id = ret._id;
+      delete ret._id;
+   },
+  },
+ }
+);
 
 PaymentSchema.statics.build = (attrs: PaymentAttrs) => {
   return new Payment(attrs);
-}
+};
 
-const Payment = mongoose.model<PaymentDoc, PaymentModel>('Payment', PaymentSchema);
+const Payment = mongoose.model<PaymentDoc, PaymentModel>(
+  'Payment', 
+  PaymentSchema
+  );
 
-export {Payment};
+export { Payment };
