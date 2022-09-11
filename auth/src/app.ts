@@ -8,6 +8,7 @@ import { signoutRouter } from './routes/signout';
 import { signupRouter } from './routes/signup';
 import { errorHandler, NotFoundError } from '@liverattickets/common';
 
+//lol
 const app = express();
 app.set('trust proxy', true);
 app.use(json());
