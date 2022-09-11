@@ -1,6 +1,6 @@
-name: test-orders
+name: tests-orders
 
-on: [pull_request]on: 
+on:
   pull_request:
     paths:
       - 'orders/**'
